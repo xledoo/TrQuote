@@ -66,3 +66,4 @@ void CMdTest::OnReceiveMdData(TrMdResponseId rId, void* wParam, void* lParam)
 	</Broker>
 </Config>
 ```
+可以配置多组连接信息通过 Operation 属性来配置使用哪一组
