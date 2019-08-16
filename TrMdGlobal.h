@@ -24,10 +24,4 @@ public:
     virtual void OnReceiveMdData(TrMdResponseId rId, void* wParam, void* lParam) = 0;
 };
 
-class CTrMdService
-{
-public:
-    virtual void OnResponse(TrMdResponseId rId, void* wParam, void* lParam) = 0;
-};
-
 #endif // TRMDGLOBAL_H
