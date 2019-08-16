@@ -19,7 +19,7 @@ public:
 };
 #```
 ###2. 重新实现虚函数
-#```
+`
 void CMdTest::OnReceiveMdData(TrMdResponseId rId, void* wParam, void* lParam)
 {
     qDebug() << __FUNCTION__;
@@ -32,4 +32,4 @@ void CMdTest::OnReceiveMdData(TrMdResponseId rId, void* wParam, void* lParam)
         }
     }
 }
-#```
+`
