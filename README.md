@@ -60,10 +60,12 @@ void CMdTest::OnReceiveMdData(TrMdResponseId rId, void* wParam, void* lParam)
 		<BrokerID>9070</BrokerID>
 		<UserID>可以不填</UserID>
 		<Password>可以不填</Password>
-		<AppID>必填</AppID>
-		<AuthCode>必填</AuthCode>	
+		<AppID>可以不填</AppID>
+		<AuthCode>可以不填</AuthCode>	
 		<MarketFront>tcp://124.74.237.193:41313</MarketFront>		
 	</Broker>
 </Config>
 ```
 可以配置多组连接信息通过 Operation 属性来配置使用哪一组
+
+穿透式监管的API对行情连接貌似并没有严格要求，所以只是订阅行情的话 AppID 和 AuthCode 不填也能正常获取行情
