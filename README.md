@@ -6,8 +6,9 @@
 
 采用最新的穿透式监管API 版本 6.3.15_20190220_tradeapi64_se_windows
 
-使用步骤：
-1. 新建一个用于接收行情的类，继承于 TrMdGlobal.h 里的 CTrMdReceiver
+##使用步骤：
+###1. 新建一个用于接收行情的类，继承于 TrMdGlobal.h 里的 CTrMdReceiver
+#```
 #include "TrMdGlobal.h"
 
 class CMdTest : public CTrMdReceiver
@@ -16,8 +17,9 @@ public:
     CMdTest();
     virtual void OnReceiveMdData(TrMdResponseId rId, void* wParam, void* lParam) override;
 };
-
-2. 重新实现虚函数
+#```
+###2. 重新实现虚函数
+#```
 void CMdTest::OnReceiveMdData(TrMdResponseId rId, void* wParam, void* lParam)
 {
     qDebug() << __FUNCTION__;
@@ -30,3 +32,4 @@ void CMdTest::OnReceiveMdData(TrMdResponseId rId, void* wParam, void* lParam)
         }
     }
 }
+#```
