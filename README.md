@@ -7,7 +7,15 @@
 采用最新的穿透式监管API 版本 6.3.15_20190220_tradeapi64_se_windows
 
 ##使用步骤：
-###1. 新建一个用于接收行情的类，继承于 TrMdGlobal.h 里的 CTrMdReceiver
+###1. 由于是QT的项目，所以需要在 .pro 里进行配置，添加外部库链接
+```cpp
+win32: LIBS += -L$$PWD/include/ -lTrQuote
+
+INCLUDEPATH += $$PWD/include
+DEPENDPATH += $$PWD/include
+```
+
+###2. 新建一个用于接收行情的类，继承于 TrMdGlobal.h 里的 CTrMdReceiver
 ```cpp
 #include "TrMdGlobal.h"
 
@@ -18,7 +26,7 @@ public:
     virtual void OnReceiveMdData(TrMdResponseId rId, void* wParam, void* lParam) override;
 };
 ```
-###2. 重新实现虚函数
+###3. 重新实现虚函数
 ```cpp
 void CMdTest::OnReceiveMdData(TrMdResponseId rId, void* wParam, void* lParam)
 {
@@ -32,4 +40,29 @@ void CMdTest::OnReceiveMdData(TrMdResponseId rId, void* wParam, void* lParam)
         }
     }
 }
+```
+
+###4. 在main.cpp里进行订阅
+```cpp
+    CMdTest* t = new CMdTest;
+    CTrQuote* qQuote = new CTrQuote;
+    qQuote->TrAddReceiver(t);
+    qQuote->TrMarketStart();
+```
+###5. TrConfigs/FrontConfig.xml 配置文件解释
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<Config Operation="public">
+	<Subscribe>rb1910</Subscribe>
+	<Subscribe>SR909</Subscribe>
+	<Broker Operation="public">
+		<BrokerName>实盘穿透式API</BrokerName>
+		<BrokerID>9070</BrokerID>
+		<UserID>可以不填</UserID>
+		<Password>可以不填</Password>
+		<AppID>必填</AppID>
+		<AuthCode>必填</AuthCode>	
+		<MarketFront>tcp://124.74.237.193:41313</MarketFront>		
+	</Broker>
+</Config>
 ```
