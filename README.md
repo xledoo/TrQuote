@@ -8,7 +8,7 @@
 
 ##使用步骤：
 ###1. 新建一个用于接收行情的类，继承于 TrMdGlobal.h 里的 CTrMdReceiver
-#```
+```cpp
 #include "TrMdGlobal.h"
 
 class CMdTest : public CTrMdReceiver
@@ -17,9 +17,9 @@ public:
     CMdTest();
     virtual void OnReceiveMdData(TrMdResponseId rId, void* wParam, void* lParam) override;
 };
-#```
+```
 ###2. 重新实现虚函数
-`
+```cpp
 void CMdTest::OnReceiveMdData(TrMdResponseId rId, void* wParam, void* lParam)
 {
     qDebug() << __FUNCTION__;
@@ -32,4 +32,4 @@ void CMdTest::OnReceiveMdData(TrMdResponseId rId, void* wParam, void* lParam)
         }
     }
 }
-`
+```
