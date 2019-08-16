@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Config Operation="public">
+	<Subscribe>rb1910</Subscribe>
+	<Subscribe>SR909</Subscribe>
+	<Broker Operation="public">
+		<BrokerName>实盘穿透式API</BrokerName>
+		<BrokerID>9070</BrokerID>
+		<UserID></UserID>
+		<Password></Password>
+		<AppID></AppID>
+		<AuthCode></AuthCode>	
+		<MarketFront>tcp://124.74.237.193:41313</MarketFront>		
+	</Broker>
+</Config>
